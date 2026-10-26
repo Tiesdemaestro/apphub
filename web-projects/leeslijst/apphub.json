@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 3,
+  "kind": "web",
+  "id": "apphub-leeslijst",
+  "name": "Mijn leeslijst",
+  "description": "Houd boeken bij met auteur, leesnotities en de status te lezen, bezig of uitgelezen.",
+  "version": "1.0.0",
+  "startUrl": "https://tiesdemaestro.github.io/apphub/leeslijst/",
+  "storage": "local",
+  "allowedOrigins": [
+    "https://tiesdemaestro.github.io"
+  ],
+  "privacyUrl": "https://tiesdemaestro.github.io/apphub/leeslijst/privacy.html",
+  "supportUrl": "https://tiesdemaestro.github.io/apphub/leeslijst/support.html",
+  "ageRating": "4+",
+  "dataCollected": [],
+  "permissions": []
+}

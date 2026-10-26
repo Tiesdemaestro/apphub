@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 3,
+  "kind": "web",
+  "id": "apphub-gewoonten",
+  "name": "Mijn gewoonten",
+  "description": "Vink dagelijkse gewoonten af en bekijk je laatste zeven dagen.",
+  "version": "1.0.0",
+  "startUrl": "https://tiesdemaestro.github.io/apphub/gewoonten/",
+  "storage": "local",
+  "allowedOrigins": [
+    "https://tiesdemaestro.github.io"
+  ],
+  "privacyUrl": "https://tiesdemaestro.github.io/apphub/gewoonten/privacy.html",
+  "supportUrl": "https://tiesdemaestro.github.io/apphub/gewoonten/support.html",
+  "ageRating": "4+",
+  "dataCollected": [],
+  "permissions": []
+}

@@ -1,5 +1,11 @@
 name: Publish AppHub examples
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'web-projects/**'
+      - 'scripts/prepare-pages.mjs'
+      - '.github/workflows/pages.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -30,6 +36,9 @@ jobs:
         run: node scripts/prepare-pages.mjs "$PAGES_BASE_URL/"
       - run: node scripts/check-web-project.mjs dist-pages/wardrobe --json
       - run: node scripts/check-web-project.mjs dist-pages/template --json
+      - run: node scripts/check-web-project.mjs dist-pages/leeslijst --json
+      - run: node scripts/check-web-project.mjs dist-pages/taken --json
+      - run: node scripts/check-web-project.mjs dist-pages/gewoonten --json
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist-pages

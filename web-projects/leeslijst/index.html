@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'"><title>Mijn leeslijst</title><link rel="stylesheet" href="./styles.css"><script type="module" src="./app.mjs"></script></head>
+<body><main><header><span class="eyebrow">JOUW EIGEN SOFTWARE</span><h1 id="name">Laden…</h1><p class="intro" id="intro"></p></header>
+<p id="status" class="status" role="status">Gegevens laden…</p><p id="error" class="error" role="alert" hidden></p><button id="retry" class="secondary" hidden>Opnieuw laden</button>
+<section class="panel"><form id="item-form"><fieldset id="editor" disabled><h2 id="editor-title">Nieuw item</h2>
+<label><span id="title-label">Titel</span><input id="title" required maxlength="120" autocomplete="off"></label>
+<label><span id="detail-label">Notitie</span><textarea id="detail" maxlength="2000" rows="2"></textarea></label>
+<label id="date-field">Datum (optioneel)<input id="date" type="date"></label>
+<label id="state-field">Status<select id="item-state"></select></label>
+<div class="actions"><button type="submit">Bewaren</button><button id="cancel" type="button" class="secondary" hidden>Annuleren</button></div>
+</fieldset></form></section>
+<p id="summary" class="summary"></p><div class="filters"><label>Zoeken<input id="search" type="search" placeholder="Zoek in je lijst"></label><label>Toon<select id="filter"></select></label></div>
+<div class="section-heading"><h2>Mijn lijst <span id="count">0</span></h2></div><p id="empty" class="empty" hidden></p><div id="items"></div>
+<details><summary>Gegevens en back-up</summary><p class="hint">Bewaar een kopie buiten deze app. Een nieuwe simulatorsessie kan met lege opslag beginnen.</p>
+<div class="actions"><button id="export" class="secondary" disabled>Back-up maken</button><button id="import" class="secondary" disabled>Back-up herstellen</button></div>
+<section id="backup" hidden><label>Back-uptekst<textarea id="backup-text" rows="5" spellcheck="false" maxlength="2000000"></textarea></label>
+<div class="actions"><button id="copy" class="secondary" hidden>Kopieer tekst</button><button id="restore" hidden>Herstellen</button></div></section>
+<button id="clear" class="danger" disabled>Alle items verwijderen</button></details><footer><a href="./privacy.html">Privacy</a><a href="./support.html">Hulp</a></footer></main></body></html>
