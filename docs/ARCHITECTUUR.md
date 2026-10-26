@@ -11,6 +11,12 @@ AppHub is een React Native/Expo-host met twee projectmodellen. **Schema v3 laadt
 | Native bibliotheek | Bestaande Kledingkast, Notities en schema-v2-formulieren; broncode van deze renderer zit in de host. |
 | Private GitHub-toegang | Alleen de native bibliotheek gebruikt desgewenst een token in SecureStore. Het token wordt niet doorgegeven aan webprojecten. |
 
+## Host bouwen en testen
+
+De host gebruikt Expo SDK 58. De gewone iOS App Store-versie van Expo Go is daarvoor niet geschikt. Het profiel `testflight` maakt een eigen ondertekende store-build voor interne toesteltests; de EAS-omgeving is `preview`. Het profiel `production` gebruikt de productieomgeving en blijft geblokkeerd totdat het publieke release-dossier compleet is. TestFlight installeren is geen openbare publicatie of App Store-goedkeuring.
+
+Het aangeleverde EAS-project-ID is `38e28ae4-0169-4b3e-a2bb-5e5d70bb73e3`. De voorlopige slug `ties-oosterman` en het account-eigendom moeten nog door EAS worden bevestigd. Een project-ID verleent geen accounttoegang.
+
 ## Publicatie en updates
 
 GitHub-code → publiceren op GitHub Pages/eigen HTTPS-host → `apphub.json` toevoegen → importeren → project openen.

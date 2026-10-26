@@ -13,20 +13,29 @@ Een iPhone-host voor zelfgemaakte software: voeg een publieke GitHub Pages-/webs
 
 **Status:** broncode en technische controles. Geen ondertekende iPhone-installatie, live gehoste demo of App Store-goedkeuring. Zie [VALIDATIE](docs/VALIDATIE.md).
 
-## Testen op je iPhone
+## Starten
 
-Gebruik Node 24. Deze versie richt zich op Expo SDK 58, passend bij de huidige Expo Go-versie. Download Expo Go op je iPhone.
+Open Terminal in deze map en voer uit:
 
 ```bash
-npm install
-npx expo install --fix
-npm run check
-npx expo-doctor
-npx expo login
-npm start
+bash Start-AppHub.command
 ```
 
-Meld je in Expo Go aan met hetzelfde Expo-account. Scan de QR-code. Deze route heeft geen eigen betaald Apple Developer-account of lokale Xcode nodig, maar vereist wel een werkende dependency-installatie en ontwikkelserver. Volledige dependencycontrole kon hier nog niet worden uitgevoerd. Bij een latere Expo Go-versie moet de SDK opnieuw worden afgestemd.
+Het script gebruikt Node 24, Git en GitHub CLI. Het laat je officieel inloggen bij GitHub en Expo, installeert dependencies, controleert de app, verifieert het aangeleverde Expo-project, maakt `Tiesdemaestro/apphub` openbaar aan, uploadt de broncode en vraagt Pages-publicatie aan. Het publiceert alleen de bestanden uit `setup-files.json` plus de lockfile. Een bestaande andere repository of privé-instelling wordt niet overschreven. Bij een fout stopt het script met de melding; zie [STARTEN](docs/STARTEN.md).
+
+Expo-project-ID: `38e28ae4-0169-4b3e-a2bb-5e5d70bb73e3`. Voorlopige slug: `ties-oosterman`, overgenomen uit jouw aanmaakcommando. Het script controleert deze tegen Expo voordat het verdergaat. De zichtbare appnaam blijft AppHub.
+
+## Testen op je iPhone
+
+Deze app gebruikt SDK 58. De App Store-versie van Expo Go ondersteunt die niet; gebruik een eigen testbuild. Na de geslaagde setup:
+
+```bash
+bash Start-AppHub.command testflight
+```
+
+Dit bouwt via EAS en uploadt naar jouw App Store Connect-account. Een actief Apple Developer-lidmaatschap en jouw Apple-aanmelding zijn nodig. Voeg daarna jezelf toe aan de interne TestFlight-testgroep; dat publiceert de app niet in de App Store. Een ongepubliceerde simulatorbuild kan vooraf via `bash Start-AppHub.command simulator`, zonder Apple-signing. EAS-gebruik volgt je Expo-abonnement; de simulatorbuild is nog geen iPhone-toesteltest.
+
+Bron: [Expo Go-versieverschillen](https://docs.expo.dev/troubleshooting/expo-go-version-mismatch/). De oorspronkelijke gratis Expo Go-instructie voor deze versie is hiermee vervangen.
 
 ## Je kledingproject online zetten
 

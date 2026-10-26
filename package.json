@@ -24,7 +24,10 @@
     "prepare:pages": "node scripts/prepare-pages.mjs",
     "test:syntax": "node scripts/check-syntax.mjs",
     "check:store": "node scripts/check-store-readiness.mjs",
-    "eas-build-post-install": "node scripts/eas-post-install.mjs"
+    "eas-build-post-install": "node scripts/eas-post-install.mjs",
+    "setup": "node scripts/setup-apphub.mjs setup",
+    "build:testflight": "node scripts/setup-apphub.mjs testflight",
+    "build:simulator": "node scripts/setup-apphub.mjs simulator"
   },
   "dependencies": {
     "expo": "~58.0.0",

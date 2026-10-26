@@ -1,47 +1,49 @@
-# AppHub testen op je iPhone
+# AppHub op je iPhone testen
 
-## Eerst via Expo Go
+## Route: een eigen TestFlight-versie
 
-Een betaald Apple Developer-lidmaatschap is hiervoor niet nodig. Installeer **Expo Go** op je iPhone en **Node.js 24** op je Mac. Gebruik dezelfde wifi en hetzelfde gratis Expo-account op beide apparaten.
+AppHub gebruikt Expo SDK 58. De gewone Expo Go-versie uit de iOS App Store ondersteunt SDK 54; gebruik die niet voor deze versie. We bouwen AppHub via EAS en installeren hem met TestFlight. Hiervoor is een actief Apple Developer-lidmaatschap nodig. Een lokale Xcode-installatie is voor deze cloudroute niet nodig.
 
-Open Terminal in de uitgepakte map `apphub`, bij `package.json` (in de projectwerkruimte: `build/apphub`):
+1. Pak het startpakket uit. Open Terminal in de map `apphub`, bij `package.json`.
+2. Start de begeleide inrichting:
 
 ```bash
-npm install
-npx expo install --fix
-npx expo-doctor
-npx expo login
-npm start
+bash Start-AppHub.command
 ```
 
-`npm start` gebruikt `expo start --go`. Log ook in Expo Go in en scan de QR-code met je iPhone-camera. Houd Terminal open. `npm run start:dev` is voor een eigen development build, niet voor deze eerste test.
+Het script controleert de hulpmiddelen, vraagt waar nodig om GitHub-/Expo-aanmelding, installeert afhankelijkheden, voert bouwcontroles uit en verifieert het bestaande Expo-project. Daarna maakt het de repository aan, uploadt de code en start de GitHub Pages-publicatie. Volg eventuele gerichte installatie- of aanmeldinstructies op het scherm.
 
-**Versies:** het pakket richt zich op Expo SDK 58. Expo Go op een echte iPhone moet die SDK ondersteunen. Rond installatie en de twee Expo-controles eerst af. Bij een versiemelding moeten de project-SDK en afhankelijkheden overeenkomen met de ondersteunde versie. Een andere QR-code lost dat niet op. Volg de [Expo-upgradehandleiding](https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/).
+3. Controleer het resultaat: een repositorylink en de gepubliceerde kledingdemo. Het Expo-project moet ID `38e28ae4-0169-4b3e-a2bb-5e5d70bb73e3` hebben. De naam `ties-oosterman` komt uit het aangeleverde startcommando; de server bevestigt de werkelijke slug en eigenaar tijdens de inrichting. Een project-ID is geen aanmelding.
+4. Rond Apple-signing en de echte Bundle ID, support- en privacygegevens af volgens [APPLE_PUBLICATIE.md](APPLE_PUBLICATIE.md). Start daarna:
+
+```bash
+bash Start-AppHub.command testflight
+```
+
+5. Installeer **TestFlight** op je iPhone, open je interne testuitnodiging en installeer AppHub.
+
+Een geslaagde JavaScript-export is nog geen geslaagde native iPhone-build. De actuele controle-uitkomsten staan in [VALIDATIE.md](VALIDATIE.md).
 
 ## Een webproject toevoegen
 
-1. Open in AppHub **Project toevoegen**.
-2. Plak een publieke HTTPS-projectlink, `eigenaar/repository` of de inhoud van een schema-v3-`apphub.json`.
-3. Controleer de maker, opslag, gegevensverwerking en leeftijd; bevestig en open het project.
+1. Publiceer `web-projects/wardrobe` via de meegeleverde GitHub Pages-workflow. Vul eerst de echte URLs en contactgegevens in; de workflow herschrijft deployment-URLs automatisch.
+2. Open in AppHub **Project toevoegen** en plak de gepubliceerde `/wardrobe/`-URL.
+3. Controleer herkomst, privacy en toestemming; voeg het project toe.
 
-Een GitHub-repository moet `apphub.json` in de hoofdmap van de standaardbranch bevatten. Het manifest wijst met `startUrl` naar de **gepubliceerde website**, bijvoorbeeld GitHub Pages. De importer publiceert of compileert geen repository.
+Je kunt ook een publieke GitHub-repository met een schema-v3-`apphub.json` in de hoofdmap van de standaardbranch importeren, of JSON plakken. Het manifest wijst naar de gepubliceerde website. De importer compileert of publiceert geen repository.
 
-De voorbeelden in `web-projects/template` en `web-projects/wardrobe` staan lokaal. Publiceer ze eerst op HTTPS en vul de echte URLs, uitgever en contactgegevens in. De meegeleverde URL-placeholders werken niet als hosting.
+## Korte toesteltest
 
-## Wat je test
-
-- Webproject openen, invoer opslaan, sluiten en opnieuw openen.
-- Foto kiezen via de bestandskiezer van het webproject.
-- Een foutieve URL en een link buiten het project: duidelijke melding.
-- Gegevens **vanuit het webproject zelf** exporteren en herstellen.
-- **Native bibliotheek:** Kledingkast, Notities, schema-v2-projecten en de afzonderlijke native back-up.
+- Voeg drie kledingstukken toe, inclusief een foto, en maak een outfit.
+- Sluit AppHub volledig en controleer of de gegevens bij heropenen behouden zijn.
+- Exporteer en herstel een back-up vanuit de kledingapp.
+- Test een foutieve URL, netwerkuitval en een link buiten het project.
+- Controleer ook de native bibliotheek en de afzonderlijke native back-up.
 
 De export in de hoofdinstellingen bevat alleen de webprojectlijst. Websitegegevens en foto's horen daar niet bij. Projecten op dezelfde origin delen browseropslag; verschillende GitHub Pages-mappen zijn geen beveiligingsgrens.
 
-## Daarna een eigen build
+## Verder ontwikkelen
 
-Voer na installatie `npm run check` en `npm run bundle:ios` uit. Voor lokaal compileren is volledige Xcode nodig; gebruik `npm run ios` voor de simulator of `npm run ios -- --device` voor een aangesloten iPhone met jouw signingconfiguratie.
+Met een geïnstalleerde development build start je de ontwikkelserver via `npm run start:dev`. Met volledige Xcode kun je lokaal de simulator gebruiken. Openbare publicatie volgt pas na de controles in [APP_STORE_GATES.md](APP_STORE_GATES.md).
 
-**Nog te verifiëren:** dependency-installatie, SDK/Expo Go-combinatie en toestelgedrag. De bouwomgeving had `ENOTFOUND` bij de npm-registry; er is geen bevestigde native build of Apple-goedkeuring. Actuele controles staan in [VALIDATIE.md](VALIDATIE.md). Publicatie volgt pas na [APP_STORE_GATES.md](APP_STORE_GATES.md).
-
-Bron: [Expo starten op een toestel](https://docs.expo.dev/get-started/start-developing/).
+Bronnen: [Expo Go-versieverschillen](https://docs.expo.dev/troubleshooting/expo-go-version-mismatch/), [EAS-project koppelen](https://docs.expo.dev/tutorial/eas/configure-development-build/), [TestFlight](https://docs.expo.dev/submit/testflight/).

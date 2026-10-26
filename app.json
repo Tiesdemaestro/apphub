@@ -1,7 +1,12 @@
 {
   "expo": {
     "name": "AppHub",
-    "slug": "apphub",
-    "version": "1.0.0"
+    "slug": "ties-oosterman",
+    "version": "1.1.0",
+    "extra": {
+      "eas": {
+        "projectId": "38e28ae4-0169-4b3e-a2bb-5e5d70bb73e3"
+      }
+    }
   }
 }
