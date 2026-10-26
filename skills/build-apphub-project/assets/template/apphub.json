@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 3,
+  "kind": "web",
+  "id": "mijn-web-project",
+  "name": "Mijn notities",
+  "description": "Een eenvoudig AppHub-project met notities en lokale opslag.",
+  "version": "1.0.0",
+  "startUrl": "https://your-account.github.io/YOUR-REPO/template/",
+  "storage": "local",
+  "allowedOrigins": ["https://your-account.github.io"],
+  "privacyUrl": "https://your-account.github.io/YOUR-REPO/template/privacy.html",
+  "supportUrl": "https://your-account.github.io/YOUR-REPO/template/support.html",
+  "ageRating": "4+",
+  "dataCollected": [],
+  "permissions": []
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "AppHub-projectbouwer"
+  short_description: "Maak en controleer projecten voor AppHub"
+  default_prompt: "Gebruik $build-apphub-project om mijn software naar een AppHub-project om te zetten en de technische controles uit te voeren."

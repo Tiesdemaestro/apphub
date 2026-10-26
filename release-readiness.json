@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {"id":"device-test","done":false,"evidence":""},
+    {"id":"moderation-reporting-response","done":false,"evidence":""},
+    {"id":"objectionable-content-filtering","done":false,"evidence":""},
+    {"id":"abusive-user-blocking","done":false,"evidence":""},
+    {"id":"software-index-universal-links","done":false,"evidence":""},
+    {"id":"age-access-enforcement","done":false,"evidence":""},
+    {"id":"privacy-consent-and-deletion","done":false,"evidence":""},
+    {"id":"native-api-review-4-7-2","done":false,"evidence":""},
+    {"id":"support-privacy-publisher","done":false,"evidence":""},
+    {"id":"payments-and-export-compliance","done":false,"evidence":""}
+  ]
+}

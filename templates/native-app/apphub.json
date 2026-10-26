@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "id": "mijn-verzameling",
+  "name": "Mijn verzameling",
+  "description": "Een eigen overzicht van je verzameling, met foto's, categorieën en notities.",
+  "version": "1.0.0",
+  "runtimeVersion": "apphub-native-1",
+  "capabilities": ["storage", "photos"],
+  "theme": { "color": "#3559C7" },
+  "collections": [
+    {
+      "id": "items",
+      "title": "Mijn items",
+      "fields": [
+        { "id": "naam", "label": "Naam", "type": "text", "required": true },
+        { "id": "foto", "label": "Foto", "type": "photo" },
+        { "id": "categorie", "label": "Categorie", "type": "choice", "options": ["Boeken", "Muziek", "Kunst", "Herinneringen", "Overig"] },
+        { "id": "toegevoegd-op", "label": "Toegevoegd op", "type": "date" },
+        { "id": "aantal", "label": "Aantal", "type": "number" },
+        { "id": "favoriet", "label": "Favoriet", "type": "boolean" },
+        { "id": "notities", "label": "Notities", "type": "multiline" }
+      ]
+    }
+  ],
+  "screens": [
+    { "id": "overzicht", "title": "Overzicht", "collection": "items", "layout": "grid", "titleField": "naam", "subtitleField": "categorie", "imageField": "foto", "sortField": "naam", "sortDirection": "asc" },
+    { "id": "lijst", "title": "Lijst", "collection": "items", "layout": "list", "titleField": "naam", "subtitleField": "notities", "sortField": "naam", "sortDirection": "asc" }
+  ],
+  "homeScreen": "overzicht"
+}

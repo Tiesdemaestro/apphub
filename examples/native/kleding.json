@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 2,
+  "id": "mijn-kleding",
+  "name": "Mijn garderobe",
+  "description": "Bewaar foto's van je kleding en leg geslaagde outfits vast. Je garderobe en outfitnotities blijven op je telefoon.",
+  "version": "1.0.0",
+  "runtimeVersion": "apphub-native-1",
+  "capabilities": ["storage", "photos"],
+  "theme": { "color": "#6E5A8B" },
+  "collections": [
+    {
+      "id": "kleding",
+      "title": "Kledingstukken",
+      "fields": [
+        { "id": "naam", "label": "Naam van het kledingstuk", "type": "text", "required": true },
+        { "id": "foto", "label": "Foto", "type": "photo" },
+        { "id": "categorie", "label": "Categorie", "type": "choice", "required": true, "options": ["Bovenstuk", "Broek", "Rok", "Jurk", "Jas", "Schoenen", "Accessoire"] },
+        { "id": "kleur", "label": "Kleur", "type": "text" },
+        { "id": "seizoen", "label": "Seizoen", "type": "choice", "options": ["Hele jaar", "Lente", "Zomer", "Herfst", "Winter"] },
+        { "id": "merk", "label": "Merk", "type": "text" },
+        { "id": "aangeschaft", "label": "Aangeschaft op", "type": "date" },
+        { "id": "prijs", "label": "Aankoopprijs in euro", "type": "number" },
+        { "id": "favoriet", "label": "Favoriet kledingstuk", "type": "boolean" },
+        { "id": "notities", "label": "Maat, onderhoud en opmerkingen", "type": "multiline" }
+      ]
+    },
+    {
+      "id": "outfits",
+      "title": "Bewaarde outfits",
+      "fields": [
+        { "id": "naam", "label": "Naam van de outfit", "type": "text", "required": true },
+        { "id": "foto", "label": "Foto van de outfit", "type": "photo" },
+        { "id": "gelegenheid", "label": "Gelegenheid", "type": "choice", "required": true, "options": ["Dagelijks", "Werk", "Uitgaan", "Feest", "Sport", "Vakantie"] },
+        { "id": "combinatie", "label": "Welke kledingstukken draag je samen?", "type": "multiline", "required": true },
+        { "id": "gedragen-op", "label": "Laatst gedragen op", "type": "date" },
+        { "id": "favoriet", "label": "Favoriete outfit", "type": "boolean" }
+      ]
+    }
+  ],
+  "screens": [
+    { "id": "garderobe", "title": "Garderobe", "collection": "kleding", "layout": "grid", "titleField": "naam", "subtitleField": "categorie", "imageField": "foto", "sortField": "naam", "sortDirection": "asc" },
+    { "id": "outfitboek", "title": "Outfits", "collection": "outfits", "layout": "grid", "titleField": "naam", "subtitleField": "gelegenheid", "imageField": "foto", "sortField": "naam", "sortDirection": "asc" },
+    { "id": "kledinglijst", "title": "Kledinglijst", "collection": "kleding", "layout": "list", "titleField": "naam", "subtitleField": "kleur", "sortField": "categorie", "sortDirection": "asc" }
+  ],
+  "homeScreen": "garderobe"
+}

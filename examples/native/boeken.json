@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "id": "mijn-boeken",
+  "name": "Mijn boeken",
+  "description": "Je eigen boekenkast: bewaar omslagen, houd je leesvoortgang bij en schrijf je indruk na het lezen.",
+  "version": "1.0.0",
+  "runtimeVersion": "apphub-native-1",
+  "capabilities": ["storage", "photos"],
+  "theme": { "color": "#77543A" },
+  "collections": [
+    {
+      "id": "boeken",
+      "title": "Boeken",
+      "fields": [
+        { "id": "titel", "label": "Titel", "type": "text", "required": true },
+        { "id": "auteur", "label": "Auteur", "type": "text", "required": true },
+        { "id": "omslag", "label": "Foto van de omslag", "type": "photo" },
+        { "id": "leesstatus", "label": "Leesstatus", "type": "choice", "required": true, "options": ["Wil ik lezen", "Aan het lezen", "Uitgelezen", "Gestopt"] },
+        { "id": "genre", "label": "Genre", "type": "choice", "options": ["Roman", "Fantasy", "Thriller", "Wetenschap", "Biografie", "Geschiedenis", "Overig"] },
+        { "id": "huidige-pagina", "label": "Huidige pagina", "type": "number" },
+        { "id": "pagina-aantal", "label": "Aantal pagina's", "type": "number" },
+        { "id": "uitgelezen-op", "label": "Uitgelezen op", "type": "date" },
+        { "id": "beoordeling", "label": "Beoordeling", "type": "choice", "options": ["1 / 5", "2 / 5", "3 / 5", "4 / 5", "5 / 5"] },
+        { "id": "favoriet", "label": "Favoriet boek", "type": "boolean" },
+        { "id": "notities", "label": "Mijn indruk en favoriete passages", "type": "multiline" }
+      ]
+    }
+  ],
+  "screens": [
+    { "id": "boekenkast", "title": "Boekenkast", "collection": "boeken", "layout": "grid", "titleField": "titel", "subtitleField": "auteur", "imageField": "omslag", "sortField": "titel", "sortDirection": "asc" },
+    { "id": "leeslijst", "title": "Leeslijst", "collection": "boeken", "layout": "list", "titleField": "titel", "subtitleField": "leesstatus", "sortField": "leesstatus", "sortDirection": "asc" }
+  ],
+  "homeScreen": "boekenkast"
+}

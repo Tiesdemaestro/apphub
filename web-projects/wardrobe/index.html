@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; font-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mijn kledingkast</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<main>
+  <header class="brand"><span class="mark" aria-hidden="true">K</span><div><p class="eyebrow">MIJN DAGELIJKSE COLLECTIE</p><h1>Kledingkast</h1></div></header>
+  <p class="intro">Meer combineren met wat je al hebt.</p>
+  <p id="status" role="status" class="status">Je kledingkast laden…</p>
+  <p id="error" role="alert" class="error" hidden></p>
+  <button id="retry" class="secondary" hidden>Opnieuw laden</button>
+  <section class="hero" aria-labelledby="outfit-heading">
+    <div class="hero-top"><span class="eyebrow">VANDAAG DRAAG IK</span><span class="pill">Op jouw toestel</span></div>
+    <h2 id="outfit-heading">Een frisse combinatie.</h2>
+    <p id="outfit-hint">Voeg een bovenstuk, onderstuk en schoenen toe.</p>
+    <div id="outfit-list" class="outfit-list"></div>
+    <button id="outfit-button" disabled>Maak een outfit <span aria-hidden="true">↗</span></button>
+  </section>
+  <div class="section-heading"><h2>Mijn kleding <span id="count" class="count">0</span></h2><button id="add-button" class="small" disabled>+ Toevoegen</button></div>
+  <form id="item-form" class="panel" hidden>
+    <h3>Nieuw kledingstuk</h3>
+    <label>Naam<input id="item-name" maxlength="80" required placeholder="Bijvoorbeeld: blauwe trui" autocomplete="off"></label>
+    <div class="form-row"><label>Categorie<select id="item-category"><option value="top">Bovenstuk</option><option value="bottom">Onderstuk</option><option value="shoes">Schoenen</option><option value="outerwear">Jas</option><option value="accessory">Accessoire</option></select></label><label>Kleur<input id="item-color" maxlength="40" placeholder="Blauw" autocomplete="off"></label></div>
+    <label class="photo-label">Foto <span class="hint">optioneel · JPG, PNG of WebP · maximaal 5 MB</span><input id="item-photo" type="file" accept="image/jpeg,image/png,image/webp"></label>
+    <img id="photo-preview" class="photo-preview" alt="Gekozen kledingfoto" hidden>
+    <p id="form-error" class="error" role="alert" hidden></p>
+    <div class="actions"><button type="submit" id="save-item">Bewaren</button><button type="button" id="cancel-item" class="secondary">Annuleren</button></div>
+  </form>
+  <div id="empty" class="empty" hidden><span aria-hidden="true">✦</span><h3>Begin met je favoriete kledingstuk</h3><p>Een kleine collectie is genoeg voor nieuwe combinaties.</p></div>
+  <div id="items" class="items"></div>
+  <details class="settings"><summary>Gegevens en back-up</summary><div class="settings-body"><p>Je gegevens staan op dit apparaat. Maak een back-up voordat je van telefoon of browser wisselt.</p><div class="actions"><button id="export" class="secondary" disabled>Back-up maken</button><button id="show-import" class="secondary" disabled>Back-up herstellen</button></div><section id="backup-panel" hidden><label id="backup-label" for="backup-text">Back-uptekst</label><textarea id="backup-text" spellcheck="false" rows="5" maxlength="16777216"></textarea><p class="hint">Bewaar de volledige tekst in een bestand of notitie die je vertrouwt. Een back-up bevat ook je foto’s.</p><div class="actions"><button id="copy-backup" class="secondary" hidden>Kopieer tekst</button><button id="restore-backup" hidden>Herstellen</button></div></section><button id="delete-all" class="danger" disabled>Alle kledinggegevens verwijderen</button></div></details>
+  <footer><a href="./privacy.html">Privacy</a><span>·</span><a href="./support.html">Hulp</a><p>Een outfit is een combinatie op categorie, geen AI-advies.</p></footer>
+</main>
+</body>
+</html>

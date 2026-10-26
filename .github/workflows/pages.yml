@@ -1,0 +1,37 @@
+name: Publish AppHub examples
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: apphub-pages
+  cancel-in-progress: false
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - uses: actions/configure-pages@v5
+        id: config
+      - name: Prepare examples with real deployment URLs
+        env:
+          PAGES_BASE_URL: ${{ steps.config.outputs.base_url }}
+        run: node scripts/prepare-pages.mjs "$PAGES_BASE_URL/"
+      - run: node scripts/check-web-project.mjs dist-pages/wardrobe --json
+      - run: node scripts/check-web-project.mjs dist-pages/template --json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist-pages
+      - uses: actions/deploy-pages@v4
+        id: deploy

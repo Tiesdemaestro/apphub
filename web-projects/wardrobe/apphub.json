@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 3,
+  "kind": "web",
+  "id": "mijn-web-kledingkast",
+  "name": "Mijn kledingkast",
+  "description": "Bewaar kledingfoto’s op je toestel en ontdek nieuwe combinaties.",
+  "version": "1.0.0",
+  "startUrl": "https://your-account.github.io/YOUR-REPO/wardrobe/",
+  "storage": "local",
+  "allowedOrigins": ["https://your-account.github.io"],
+  "privacyUrl": "https://your-account.github.io/YOUR-REPO/wardrobe/privacy.html",
+  "supportUrl": "https://your-account.github.io/YOUR-REPO/wardrobe/support.html",
+  "ageRating": "4+",
+  "dataCollected": [],
+  "permissions": []
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 2,
+  "id": "mijn-taken",
+  "name": "Mijn taken",
+  "description": "Leg taken vast voor werk, studie en thuis. Bewaar een deadline, kies een prioriteit en vink afgeronde taken af.",
+  "version": "1.0.0",
+  "runtimeVersion": "apphub-native-1",
+  "capabilities": ["storage"],
+  "theme": { "color": "#296A58" },
+  "collections": [
+    {
+      "id": "taken",
+      "title": "Taken",
+      "fields": [
+        { "id": "titel", "label": "Wat wil je doen?", "type": "text", "required": true },
+        { "id": "gebied", "label": "Gebied", "type": "choice", "required": true, "options": ["Werk", "Studie", "Thuis", "Persoonlijk"] },
+        { "id": "prioriteit", "label": "Prioriteit", "type": "choice", "required": true, "options": ["1 · Hoog", "2 · Normaal", "3 · Laag"] },
+        { "id": "deadline", "label": "Uiterlijk op", "type": "date" },
+        { "id": "duur", "label": "Geschatte tijd in minuten", "type": "number" },
+        { "id": "klaar", "label": "Afgerond", "type": "boolean" },
+        { "id": "notities", "label": "Stappen en aantekeningen", "type": "multiline" }
+      ]
+    }
+  ],
+  "screens": [
+    { "id": "takenlijst", "title": "Taken", "collection": "taken", "layout": "list", "titleField": "titel", "subtitleField": "prioriteit", "sortField": "prioriteit", "sortDirection": "asc" },
+    { "id": "deadlines", "title": "Deadlines", "collection": "taken", "layout": "list", "titleField": "titel", "subtitleField": "deadline", "sortField": "deadline", "sortDirection": "asc" },
+    { "id": "voortgang", "title": "Voortgang", "collection": "taken", "layout": "list", "titleField": "titel", "subtitleField": "klaar", "sortField": "klaar", "sortDirection": "asc" }
+  ],
+  "homeScreen": "takenlijst"
+}
