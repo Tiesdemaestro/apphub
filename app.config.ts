@@ -13,7 +13,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ...config,
     name: 'AppHub', slug: config.slug || 'ties-oosterman', version: '1.1.0', platforms: ['ios'],
     orientation: 'portrait', userInterfaceStyle: 'light', icon: './assets/icon.png',
-    splash: { image: './assets/splash.png', resizeMode: 'contain', backgroundColor: '#f7f6fa' },
+    // SDK 58 no longer accepts the legacy splash key. Use the native default launch screen.
     ios: {
       ...config.ios, supportsTablet: false, bundleIdentifier, ...(appleTeamId ? { appleTeamId } : {}), buildNumber: '1',
       // Export-compliance answer must be reviewed for the final build.

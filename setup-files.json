@@ -25,6 +25,7 @@
   "examples/native/kleding.json",
   "examples/native/taken.json",
   "index.ts",
+  "package-lock.json",
   "package.json",
   "release-readiness.json",
   "scripts/check-native-project.mjs",

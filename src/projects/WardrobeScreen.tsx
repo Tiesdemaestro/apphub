@@ -31,7 +31,7 @@ export default function WardrobeScreen({ storage, media, onBusyChange }: Project
   const pendingPhotos = useRef(new Set<string>());
   const [formError, setFormError] = useState<string | null>(null);
   const [variation, setVariation] = useState<number | null>(null);
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<React.ComponentRef<typeof ScrollView>>(null);
 
   useEffect(() => {
     let active = true;

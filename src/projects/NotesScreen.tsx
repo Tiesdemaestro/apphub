@@ -32,7 +32,7 @@ export default function NotesScreen({ storage, onBusyChange }: ProjectProps) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [formError, setFormError] = useState<string | null>(null);
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<React.ComponentRef<typeof ScrollView>>(null);
 
   useEffect(() => {
     let active = true;

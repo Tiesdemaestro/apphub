@@ -10,8 +10,11 @@
 | Skillformaat | Officiële quick_validate geslaagd. |
 | Zelfstandige skillproef | Een afzonderlijke agent maakte met alleen de skill een boekenapp: technische audit geslaagd, 0 fouten, 8 aanvullende tests geslaagd. Geen browser- of toesteltest. |
 | Productiereleasecontrole | Blokkeert correct op de tien open bewijsvelden in release-readiness.json. |
-| Dependency-installatie en lockfile | Niet afgerond: npm-registry niet bereikbaar vanuit deze sessie (`ENOTFOUND`). |
-| Volledige RN/Expo-typecheck, bundel en native build | Niet uitgevoerd; geïnstalleerde native dependencies ontbreken. |
+| Dependency-installatie en lockfile | Gebruiker heeft installatie afgerond; package-lock.json vastgelegd. Expo 58.0.19, React Native 0.88.0, React 19.3.0, TypeScript 6.0.3. |
+| Volledige RN/Expo-typecheck | Geslaagd met de daadwerkelijk geïnstalleerde dependencies. |
+| iOS-JavaScriptbundel | Geslaagd: 718 modules, Hermes-bundel circa 2,1 MB. Dit is geen native compilatie of ondertekende IPA. |
+| Dependencycontrole | Expo offline-controle meldt up-to-date; online doctor-/registrycontrole blijft nodig. |
+| Native build | Nog niet uitgevoerd. |
 | Browser/IndexedDB end-to-end | Niet uitgevoerd: lokale browser-/serverprocessen werden door de omgeving geblokkeerd. |
 | Echte iPhone / eigen TestFlight-build | Niet uitgevoerd. Gewone App Store-Expo Go ondersteunt niet de gebruikte SDK 58. |
 | GitHub Pages-publicatie | Niet uitgevoerd; nog geen doelrepository aangemaakt. |
@@ -20,9 +23,9 @@
 | Expo-projectidentiteit | Aangeleverd: `38e28ae4-0169-4b3e-a2bb-5e5d70bb73e3`. Servertoegang, eigenaar en slug nog niet bevestigd. |
 | App Store-review | Niet ingediend. |
 
-De 128 tests omvatten 88 bestaande native tests, 19 webhosttests, 9 domeintests voor webvoorbeelden 8 skilltests en 4 tests voor publicatiepaden, Expo-identiteit en scheiding van TestFlight/publieke release. GitHub-responses en opslagadapters zijn in de hosttests nagebootst. De tests bewijzen geen werkende WebKit-, SQLite-, fotokiezer- of Keychain-integratie op een echte iPhone.
+De 128 tests omvatten 88 bestaande native tests, 19 webhosttests, 9 domeintests voor webvoorbeelden, 8 skilltests en 4 tests voor publicatiepaden, Expo-identiteit en scheiding van TestFlight/publieke release. GitHub-responses en opslagadapters zijn in de hosttests nagebootst. De tests bewijzen geen werkende WebKit-, SQLite-, fotokiezer- of Keychain-integratie op een echte iPhone.
 
-SDK 58 en de moduleversies zijn afgestemd op de actuele officiële Expo-documentatie. De eerdere basis gebruikte SDK 56. Installatie, `expo install --fix`, `expo-doctor`, volledige typecontrole en visuele toestelcontrole zijn nodig om de upgrade te bevestigen.
+De SDK 58-upgrade is aangepast aan de werkelijk geïnstalleerde types: ScrollView gebruikt het instance-ref-type, WebView krijgt een expliciet props-generic en de verwijderde legacy-splashconfig is vervangen door het standaard native opstartscherm. De aangeleverde splash-afbeelding wordt momenteel niet toegepast. `expo-doctor`, de native build en de visuele toesteltest blijven open.
 
 De eerdere gratis Expo Go-route is gecorrigeerd: de App Store-versie stopt volgens de [actuele Expo-uitleg](https://docs.expo.dev/troubleshooting/expo-go-version-mismatch/) bij SDK 54. Een eigen TestFlight-build vereist Apple Developer-toegang. Het `testflight`-profiel en de publieke `production`-release hebben daarom afzonderlijke controles.
 

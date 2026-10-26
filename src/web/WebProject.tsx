@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from 'react-native';
-import { WebView } from 'react-native-webview';
+import { WebView, type WebViewProps } from 'react-native-webview';
 import { canNavigate } from './policy';
 import type { WebManifest } from './contracts.mjs';
 
 /** No onMessage, injected JS or native SDK is exposed to remote projects. */
 export default function WebProject({ app, onClose }: { app: WebManifest; onClose: () => void }) {
-  const ref = useRef<WebView>(null);
+  const ref = useRef<WebView<WebViewProps>>(null);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,7 @@ export default function WebProject({ app, onClose }: { app: WebManifest; onClose
     {loading && !error && <ActivityIndicator color="#6358d7" style={s.progress} accessibilityLabel="Project laden" />}
     {!!notice && <Pressable accessibilityRole="button" accessibilityLabel="Melding sluiten" onPress={() => setNotice('')}><Text style={s.notice}>{notice}</Text></Pressable>}
     {error ? <View style={s.center}><Text style={s.name}>Project niet geladen</Text><Text style={s.message}>{error}</Text><Pressable accessibilityRole="button" style={s.button} onPress={() => { setError(''); setAttempt(v => v + 1); }}><Text style={s.link}>Opnieuw proberen</Text></Pressable></View> :
-      <WebView key={`${app.id}:${attempt}`} ref={ref} source={{ uri: app.startUrl }} style={s.fill}
+      <WebView<WebViewProps> key={`${app.id}:${attempt}`} ref={ref} source={{ uri: app.startUrl }} style={s.fill}
         originWhitelist={['*']} // Route ALL schemes through the guard, never automatically to the OS.
         onShouldStartLoadWithRequest={(request) => {
           const allowed = canNavigate(app, request.url);
